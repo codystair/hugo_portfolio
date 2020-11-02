@@ -20,6 +20,6 @@ jobs:
       - name: Clean public directory
         run: rm -rf public
       - name: Build Site
-        run: hugo build
+        run: hugo
       - name: sync to s3
         run: aws s3 sync public s3://${{ env.BRANCH_NAME }}.stagehandapp.com
