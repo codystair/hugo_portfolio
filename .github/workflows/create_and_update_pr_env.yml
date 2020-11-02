@@ -13,6 +13,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+      - name: Clean public directory
+        run: rm -rf public
       - name: Build Site
         run: hugo build
       - name: sync to s3
