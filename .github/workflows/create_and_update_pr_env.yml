@@ -7,9 +7,13 @@ jobs:
   create_or_update_pr_env:
     runs-on: ubuntu-latest
     env:
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
       BRANCH_NAME: ${{ github.head_ref }}
+      SOURCE_DIR: "public"
+      DEST_DIR: ${{ github.head_ref }}
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -21,5 +25,6 @@ jobs:
         run: rm -rf public
       - name: Build Site
         run: hugo
-      - name: sync to s3
-        run: aws s3 sync public s3://${{ env.BRANCH_NAME }}.stagehandapp.com
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
