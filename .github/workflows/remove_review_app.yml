@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    types: [closed]
+
+    name: Remove Review App
+jobs:
+  remove_review_app:
+    runs-on: ubuntu-latest
+    env:
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+      BRANCH_NAME: ${{ github.head_ref }}
+      SOURCE_DIR: "public"
+      DEST_DIR: ${{ github.head_ref }}
+      PATH_TO_DELETE: ${{ github.head_ref }}
+    - name: Remove from S3
+      uses: vitorsgomes/s3-rm-action@master
+      with:
+        args: --recursive
