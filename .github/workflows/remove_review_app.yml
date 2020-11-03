@@ -2,7 +2,7 @@ on:
   pull_request:
     types: [closed]
 
-    name: Remove Review App
+    name: Remove PR App
 jobs:
   remove_review_app:
     runs-on: ubuntu-latest
@@ -15,6 +15,7 @@ jobs:
       SOURCE_DIR: "public"
       DEST_DIR: ${{ github.head_ref }}
       PATH_TO_DELETE: ${{ github.head_ref }}
+    steps:
     - name: Remove from S3
       uses: vitorsgomes/s3-rm-action@master
       with:
