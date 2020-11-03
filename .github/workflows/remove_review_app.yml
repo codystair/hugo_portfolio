@@ -15,7 +15,8 @@ jobs:
       SOURCE_DIR: "public"
       DEST_DIR: ${{ github.head_ref }}
       PATH_TO_DELETE: ${{ github.head_ref }}
-    - name: Remove from S3
-      uses: vitorsgomes/s3-rm-action@master
-      with:
-        args: --recursive
+    steps:
+      - name: Remove from S3
+        uses: vitorsgomes/s3-rm-action@master
+        with:
+          args: --recursive
