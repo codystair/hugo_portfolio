@@ -1,4 +1,4 @@
-Fun with SHAs!!!
+Fun with SHAs!!! take 2
 
 Boy I hope this works! (pr comment 1)
 try relative config
