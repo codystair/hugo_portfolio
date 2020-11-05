@@ -1,7 +1,7 @@
 This is my portfolio.
 
 Boy I hope this works! (pr comment 1)
-try relative config
+delete baseURL thing
 On this site, you'll find
 
 - My biography
