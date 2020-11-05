@@ -24,7 +24,7 @@ jobs:
       - name: Clean public directory
         run: rm -rf public
       - name: Build Site
-        run: hugo --baseURL="https://d1iyl7lab1awxd.cloudfront.net/${{ github.head_ref }}" --canonifyURLs
+        run: hugo --baseURL="https://d1iyl7lab1awxd.cloudfront.net/${{ github.head_ref }}"
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
