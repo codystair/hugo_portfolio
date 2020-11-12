@@ -1,4 +1,6 @@
 {{ define "main" }}
   <h2>{{ .Title }}</h2>
   {{ .Content }}
+  {{ $image := resources.Get "images/cat.jpeg" }}
+  <img src="{{ $image.Permalink }}" alt="">
 {{ end }}
