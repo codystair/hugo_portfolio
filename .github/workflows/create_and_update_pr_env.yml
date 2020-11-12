@@ -18,9 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: "latest"
+        run: brew install hugo
       - name: Clean public directory
         run: rm -rf public
       - name: Build Site
